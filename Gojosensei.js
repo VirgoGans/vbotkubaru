@@ -153,6 +153,7 @@ module.exports = GojoMdNx = async (GojoMdNx, m, chatUpdate, store) => {
     	const isPremium = isCreator || global.premium.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false
 	    
         //member\\
+        let record = GojoMdNx.sendPresenceUpdate('recording', m.chat)
         let picaks = [flaming,fluming,flarun,flasmurf]
 		let picak = picaks[Math.floor(Math.random() * picaks.length)]
 		
@@ -195,7 +196,7 @@ module.exports = GojoMdNx = async (GojoMdNx, m, chatUpdate, store) => {
             console.error(err)
         }
 	//record\\
-	GojoMdNx.sendPresenceUpdate('recording', m.chat)
+	
 	//group target \\
 const reply = (teks) => {
             GojoMdNx.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botname}`,"body": ` Gojo-Satoru`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./GojoMedia/gojo.jpg`),"sourceUrl": "https://telegra.ph/file/8bbe8a7de5c351dfcb077.jpg"}}}, { quoted: m})
