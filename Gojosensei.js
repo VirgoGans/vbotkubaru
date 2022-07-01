@@ -2325,8 +2325,8 @@ reply(`*Text Maker List :*\n•> glitch\n•> glow`)
 }
 break
             case 'husbu': case 'shinobu': case 'megumin': case 'waifus': case 'nekos': case 'trap': case 'blowjob':
-					reply(mess.wait)
 					if (!isCreator) return replay(`${mess.owner}`)
+					reply(mess.wait)
 					axios.get(`https://api.waifu.pics/nsfw/${command}`)
 					.then(({data}) => {
 				GojoMdNx.sendImage(m.chat, data.url, mess.success, m)
@@ -2638,7 +2638,52 @@ break
                 if (anu.status == false) return reply(anu.message)
                 GojoMdNx.sendText(m.chat, `🐦 *Date :* ${anu.message.tgl_memancing}\n🐦 *Results :* ${anu.message.result}\n🐦 *Notes :* ${anu.message.catatan}`, m)
             }
+            
             break
+case 'ipinfo': case 'infoip': {
+if (!text) return reply("ipnya mana kak")
+fetchJson('http://ip-api.com/json/' + text ).then((y) => {
+reply(`${Mono}							『 IP INFORMATION 』${Mono}\n
+🖥 *IP:* ${text}
+📌 *Status:* ${y.status}
+🌐 *Country:* ${y.countryCode}
+🌍 *Region:* ${y.region}
+🗾 *Region Name:* ${y.regionName}
+🏢 *City:* ${y.city}
+🛶 *Zip:* ${y.zip}
+🛰 *Lat:* ${y.lat}
+🛩 *Lon:* ${y.lon}
+⏰ *Time Zone:* ${y.timezone}
+🔋 *Isp:* ${y.isp}
+📡 *Org:* ${y.org}
+🪄 *As:* ${y.as}
+`)
+})
+}
+break
+case 'iploc': case 'ipmap': {
+if (!text) return reply("ipnya mana kak")
+reply(`	      ${Mono}『 IP LOCATION 』${Mono}\n\n*LOCATION FOR : ${text}*`)
+fetchJson('http://ip-api.com/json/' + text ).then((y) => {
+anu = `
+🛰 *Lat:* ${y.lat}
+🛩 *Lon:* ${y.lon}
+`
+zaki.sendMessage(from, { location :  { degreesLatitude: y.lat, degreesLongitude: y.lon }}, {quoted: m})
+})
+}
+break
+case 'ssweb': {
+if (!args[0]) return reply(`Example : \n${prefix + command} https://instagram.com/iamkizakixd`)
+if (!isUrl(args[0])) return reply("Hanya url!")
+reply(mess.wait)
+try {
+fetchJson(`https://shot.screenshotapi.net/screenshot?&url=${args[0]}&full_page=true&output=json&file_type=png&dark_mode=true&wait_for_event=load`).then(res => zaki.sendMessage(from, {image:{url:res.screenshot}, caption:"Done!"}, {quoted:m}))
+} catch {
+reply("Error!")
+}
+}
+break
             case 'masasubur': {
                 if (!text) throw `Example : ${prefix + command} 12, 1, 2022, 28\n\nNote : ${prefix + command} First Day Of Menstruation Cycle`
                 let [tgl, bln, thn, siklus] = text.split`,`
@@ -3652,6 +3697,12 @@ case 'allmenu': {
 ┃╠${prefix}leaderboard
 ┃╠${prefix}buy [option]
 ┃╠${prefix}sell [option]
+┃╠══☯︎「 NSFW (owner only)」 ☯︎
+┃╠${prefix}blowjob
+┃╠${prefix}trap
+┃╠${prefix}nekos
+┃╠${prefix}waifus
+┃╠${prefix}megumin
 ┃╠═✪「 DOWNLOADER 」☯︎
 ┃╠${prefix}ytmp3 [url|quality]
 ┃╠${prefix}ytmp4 [url|quality]
@@ -3777,6 +3828,10 @@ case 'allmenu': {
 ┃╠${prefix}start
 ┃╠${prefix}next
 ┃╠${prefix}leave
+┃╠══☯︎「 TOOLS 」 ☯︎
+┃╠${prefix}ssweb [url]
+┃╠${prefix}ipinfo[ip]
+┃╠${prefix}iploc[ip]
 ┃╠═✪「 VOICE CHANGER 」☯︎
 ┃╠${prefix}bass [reply aud]
 ┃╠${prefix}blown [reply aud]
