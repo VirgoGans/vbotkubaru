@@ -32,7 +32,7 @@ global.myweb = 'https://youtube.com/c/VirgoGans'
 global.packname = 'V-Bot'
 global.author = 'Virgo'
 global.sessionName = 'session'
-global.prefa = ['','!','.','🐦','🐤','🗿']
+global.prefa = ['_']
 global.sp = '⭔'
 global.mess = {
     success: 'Done ✓',
