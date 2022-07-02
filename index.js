@@ -87,7 +87,7 @@ async function startXeonBotInc() {
     })
     
     // Group Update
-    XeonBotInc.ev.on('groups.update', async pea => {
+ /*   XeonBotInc.ev.on('groups.update', async pea => {
        //console.log(pea)
     // Get Profile Picture Group
        try {
@@ -95,7 +95,7 @@ async function startXeonBotInc() {
        } catch {
        ppgc = 'https://shortlink.XeonBotIncarridho.my.id/rg1oT'
        }
-       let wm_fatih = { url : ppgc }
+      / let wm_fatih = { url : ppgc }
        if (pea[0].announce == true) {
        XeonBotInc.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nThe Group Has Been Closed By Admin, Now Only Admin Can Send Messages !`, `Group Settings Change Message`, wm_fatih, [])
        } else if(pea[0].announce == false) {
@@ -107,9 +107,9 @@ async function startXeonBotInc() {
        } else {
        XeonBotInc.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nGroup Subject Has Been Changed To *${pea[0].subject}*`, `Group Settings Change Message`, wm_fatih, [])
      }
-    })
+    })*/
 
-    XeonBotInc.ev.on('group-participants.update', async (anu) => {
+ /*   XeonBotInc.ev.on('group-participants.update', async (anu) => {
         console.log(anu)
         try {
             let metadata = await XeonBotInc.groupMetadata(anu.id)
@@ -127,10 +127,10 @@ async function startXeonBotInc() {
                     ppgroup = await XeonBotInc.profilePictureUrl(anu.id, 'image')
                 } catch {
                     ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-                }
+                }*/
 
 //welcome\\
-        let nama = await XeonBotInc.getName(num)
+     /*   let nama = await XeonBotInc.getName(num)
 memb = metadata.participants.length
 
 Kon = await getBuffer(`https://hardianto.xyz/api/welcome3?profile=${encodeURIComponent(ppuser)}&name=${encodeURIComponent(nama)}&bg=https://telegra.ph/file/d460e086f9f9bf6b04e17.jpg&namegb=${encodeURIComponent(metadata.subject)}&member=${encodeURIComponent(memb)}`)
@@ -153,7 +153,7 @@ Tol = await getBuffer(`https://hardianto.xyz/api/goodbye3?profile=${encodeURICom
         } catch (err) {
             console.log(err)
         }
-    })
+    })*/
 	
     //Setting\\
     XeonBotInc.decodeJid = (jid) => {
